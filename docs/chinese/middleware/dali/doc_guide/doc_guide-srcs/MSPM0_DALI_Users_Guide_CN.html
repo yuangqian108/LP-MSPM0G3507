@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MSPM0 DALI User’s Guide &mdash; MSPM0 DALI User&#39;s Guide 2.0.0.x documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="MSPM0 DALI User’s Guide" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> MSPM0 DALI User's Guide
+          </a>
+              <div class="version">
+                2.0.0.x
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MSPM0 DALI User’s Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dali-in-the-mspm0-sdk">2. DALI in the MSPM0 SDK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#control-gear">Control Gear</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#supported-dali-parts">Supported DALI Parts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#control-devices">Control Devices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Supported DALI Parts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example-applications">3. Example Applications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#led-demo">1. LED Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#occupancy-sensor-demo">2. Occupancy Sensor demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-controller-demo">3. Test Controller demo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MSPM0 DALI User's Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>MSPM0 DALI User’s Guide</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mspm0-dali-user-s-guide">
+<h1>MSPM0 DALI User’s Guide<a class="headerlink" href="#mspm0-dali-user-s-guide" title="Permalink to this heading">¶</a></h1>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://www.dali-alliance.org/dali/">Digitally Addressable Lighting Interface (DALI)</a> is a serial protocol for digital lighting control that allows for simple and efficient communication between various lighting application gear and controllers.</p>
+<figure class="align-default">
+<img alt="" src="../_images/DALI_logo.png" />
+</figure>
+<p><strong>Note</strong>: The use of “Master” and “Slave” terminology is being considered obsolete. These terms have been replaced with “Controller” and “Gear” respectively.</p>
+</section>
+<section id="dali-in-the-mspm0-sdk">
+<h2>2. DALI in the MSPM0 SDK<a class="headerlink" href="#dali-in-the-mspm0-sdk" title="Permalink to this heading">¶</a></h2>
+<p>The MSPM0 SDK provides a DALI protocol software layer that enables the MSPM0 to act either as a control gear or as a control device. The implementation is based on selected parts of the IEC62386 standard and is structure to provide essential protocol handling, while leaving flexibility for users to build custom application logic on top.</p>
+<section id="control-gear">
+<h3>Control Gear<a class="headerlink" href="#control-gear" title="Permalink to this heading">¶</a></h3>
+<p>Control gear are devices that receive and act on DALI commands. These devices control lighting loads based on the instructions received over the DALI bus.</p>
+<section id="supported-dali-parts">
+<h4>Supported DALI Parts<a class="headerlink" href="#supported-dali-parts" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>DALI IEC 62386-102:2014 - (General Requirements)</strong> defines the core behaviors for all DALI control gear, including addressability, command handling, and light output control parameters.</p></li>
+<li><p><strong>DALI IEC 62386-207:2018 - (LED Modules)</strong> extends Part 102 with specific functionality required for controlling LED drivers.</p></li>
+</ul>
+<p><strong>Included Features</strong></p>
+<ul class="simple">
+<li><p>Functions to receive and transmit DALI commands and responses, respectively</p></li>
+<li><p>Template functions using EEPROM to store certain DALI information in Flash memory and reload that information at startup</p></li>
+<li><p>Fade Time/Fade Rate fade routines</p></li>
+<li><p>Support for Direct Arc Power Control (DAPC), Up, Down, Step Up, Step Down, Recall Max, and Recall Min Execution Commands</p>
+<ul>
+<li><p>Other execution commands can be implemented utilizing the fade time routine implemented for DAPC</p></li>
+</ul>
+</li>
+<li><p>Support for Configuration commands</p>
+<ul>
+<li><p>Extended Fade Time and Identify Device were omitted for customer implementation</p></li>
+<li><p>Template for setting fast fade time was included, but translation to timer load value implementation was omitted</p></li>
+<li><p>Only fade time for IEC62386-102:2014 is supported</p>
+<ul>
+<li><p>Extended Fade Time and Fast Fade Time are not supported</p></li>
+<li><p>Fast fade times can be set, computation for extended fade times will have to be included by customer</p></li>
+<li><p>Modify timeToPeriodConversion to support use in DAPC</p></li>
+</ul>
+</li>
+<li><p>Template for Reset Memory Bank was included in source code</p></li>
+</ul>
+</li>
+<li><p>Support for both logarithmic and linear fade curves</p>
+<ul>
+<li><p>IEC 62386-207 supports a linear fade curve if selected</p></li>
+<li><p>If LED Module is enabled for a connected device, it will allow you to use a configuration command to select a dimming curve</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="control-devices">
+<h3>Control Devices<a class="headerlink" href="#control-devices" title="Permalink to this heading">¶</a></h3>
+<p>Control devices are responsible for initiating communication on the DALI bus. These devices send commands or events based on inputs such as sensor triggers.</p>
+<section id="id1">
+<h4>Supported DALI Parts<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>DALI IEC 62386-103:2014 - (General Requirements)</strong> defines the general behaviors for all DALI control devices, including instance based addressing, event generation and communication format.</p></li>
+<li><p><strong>DALI IEC 62386-303:2017 - (Occupancy Sensors)</strong> extends Part 103 with input behaviors specific to occupancy detection devices, such as movement and presence sensors.</p></li>
+</ul>
+<p><strong>Included Features</strong></p>
+<ul class="simple">
+<li><p>Functions to receive and transmit DALI commands and responses, respectively</p></li>
+<li><p>Template functions using EEPROM to store certain DALI information in Flash memory and reload that information at startup</p></li>
+<li><p>Support for Multi Master Application Controller (Collision Detection, Collision Avoidance and Collision Recovery)</p></li>
+<li><p>Support for DALI 103 Commands</p>
+<ul>
+<li><p>Device Control Instructions</p></li>
+<li><p>Device Configuration Instructions</p></li>
+<li><p>Device Queries</p></li>
+<li><p>Instance Control Instructions</p></li>
+<li><p>Special Commands</p></li>
+</ul>
+</li>
+<li><p>Support for DALI 303 Event Messages</p></li>
+<li><p>Support for configuring the onboard PIR sensor on the TIDA 010-963 boosterpack.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="example-applications">
+<h2>3. Example Applications<a class="headerlink" href="#example-applications" title="Permalink to this heading">¶</a></h2>
+<p>This section provides example applications based on the supported DALI functionality. Each example demonstrates the use of specific parts and can be used as a reference for developing full-featured applications.</p>
+<section id="led-demo">
+<h3>1. LED Demo<a class="headerlink" href="#led-demo" title="Permalink to this heading">¶</a></h3>
+<p>This example demonstrates DALI control gear implementation using DALI Part 102 and 207. The onboard LED on the launchpad is used to represent the lighting load.</p>
+<p>Required Materials</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ti.com/product/MSPM0L1306">MSPM0L1306 LaunchPad(LP)</a></p>
+<ul>
+<li><p><img alt="image0" src="../_images/MSPM0L1306.png" /></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.hasseb.fi/shop2/index.php?route=product/product&amp;product_id=50">Hasseb DALI 2 Controller/GUI</a></p>
+<ul>
+<li><p><img alt="image1" src="../_images/hasseb_DALI_controller.png" /></p></li>
+<li><p><img alt="image2" src="../_images/hasseb_DALI_2_controller_gui.png" /></p></li>
+</ul>
+</li>
+<li><p>TIDA 010-963 Boosterpack</p>
+<ul>
+<li><p><img alt="image3" src="../_images/tida_010_963.png" /></p></li>
+</ul>
+</li>
+</ul>
+<p>Mount the TIDA 010-963 Boosterpack onto MSPM0L1306_LP. Connect the DALI bus lines to Hasseb DALI 2 controller. Once the example is flashed and device is running the example, launch the DALI 2 Controller GUI and press initialize. Once a short address, random address, and device type appear, you can begin sending supported/implemented commands to the device. LED on the launchpad will respond to the supported execution commands.</p>
+</section>
+<section id="occupancy-sensor-demo">
+<h3>2. Occupancy Sensor demo<a class="headerlink" href="#occupancy-sensor-demo" title="Permalink to this heading">¶</a></h3>
+<p>This example uses DALI Part 103 and Part 303 to implement an occupancy sensor using the onboard PIR sensor on the TIDA 010-963 board. The device sends event messages based on the detection motion.</p>
+<p>Required Materials</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ti.com/product/MSPM0G3507">MSPM0G3507 LaunchPad(LP)</a></p>
+<ul>
+<li><p><img alt="image4" src="../_images/MSPM0G3507.png" /></p></li>
+</ul>
+</li>
+<li><p>TIDA 010-963 Boosterpack</p>
+<ul>
+<li><p><img alt="image5" src="../_images/tida_010_963.png" /></p></li>
+</ul>
+</li>
+</ul>
+<p>External DALI Application controller can be used to send commands and verify event messages of the input device.</p>
+<p>The test controller example can be used to evaluate this demo. However, no predefined commands are included in the code, users must manually input valid forward frame data to test the input devices.</p>
+<p>Mount the TIDA 010-963 Boosterpack onto MSPM0G3507_LP. Connect the DALI bus lines to the boosterpack mounted on another MSPM0G3507_LP which is running the test controller example. Ensure that one of the TIDA 010-963 board provides power to the bus by supplying a 24V external DC input through the barrel jack connector on the board. Also, make sure the J1 and J7 connectors are properly connected to enable the external supply to power the DALI bus. Details on how to send commands using the test controller example are provided in the following section.</p>
+</section>
+<section id="test-controller-demo">
+<h3>3. Test Controller demo<a class="headerlink" href="#test-controller-demo" title="Permalink to this heading">¶</a></h3>
+<p>This example uses DALI Part 103 to implement a basic DALI application controller capable of sending forward frames. It allows users to manually construct and transmit 16-bit or 24-bit frames over the DALI bus.</p>
+<p>No predefined commands are included in this example. Users are expected to modify or input the desired command frames at runtime. This setup serves as a reference for building a full-featured application controller, where custom control logic and flow can be added based on their requirements.</p>
+<p>Once the example is flashed and the device is running, users can add the gUserVar variable to the expressions tab and modify its parameters as needed. Then set toSend to 1 to trigger the command transmission. If a response is received, the gReceive variable is set to 1, and the response data can be viewed in dali_gpio.Rx.dataArr.</p>
+<figure class="align-default">
+<img alt="" src="../_images/expressions_tab.png" />
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="MSPM0 DALI User’s Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="https://www.ti.com/corp/docs/legal/copyright.shtml">1995-2023, Texas Instruments Incorporated. All rights reserved</a>, Texas Instruments Incorporated. All rights reserved. <br/>
+      <a href="https://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="https://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="https://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="https://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
